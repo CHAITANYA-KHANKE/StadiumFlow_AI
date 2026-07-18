@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --background: #faf9f5;
+  --foreground: #142d29;
+  
+  --brand-dark: #f4f2ea;
+  --brand-elevated: #ffffff;
+  --brand-border: #e2dfd5;
+  --brand-cyan: #0f594d;
+  --brand-teal: #1f7a6b;
+  --brand-lime: #65a30d;
+  
+  --status-green: #15803d;
+  --status-yellow: #b45309;
+  --status-orange: #c2410c;
+  --status-red: #b91c1c;
+}
+
+[data-theme="dark"] {
+  --background: #071714;
+  --foreground: #f0f4f3;
+  
+  --brand-dark: #05100e;
+  --brand-elevated: #0d2420;
+  --brand-border: #1a423b;
+  --brand-cyan: #2dd4bf;
+  --brand-teal: #0d9488;
+  --brand-lime: #a3e635;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-elevated: var(--brand-elevated);
+  --color-brand-border: var(--brand-border);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-lime: var(--brand-lime);
+  --color-status-green: var(--status-green);
+  --color-status-yellow: var(--status-yellow);
+  --color-status-orange: var(--status-orange);
+  --color-status-red: var(--status-red);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom focus ring for accessibility */
+*:focus-visible {
+  outline: 3px solid var(--brand-cyan);
+  outline-offset: 2px;
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brand-cyan);
+  color: #000;
+  padding: 8px 16px;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
