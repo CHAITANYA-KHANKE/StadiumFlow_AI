@@ -55,44 +55,7 @@ graph TD
     H -->|Local QA Template Match| I
 ```
 
----
 
-## 🎯 The 6 Evaluation Pillars (100% Verified)
-
-StadiumFlow AI is optimized to score 100/100 on all six evaluation pillars of the challenge:
-
-### 1. Code Quality (High Impact)
-*   **Zero Linter Warnings:** Clean ESLint configuration with `0 errors` and `0 warnings`.
-*   **Strict Type-Safety:** Complies with TypeScript options (`tsc --noEmit` checks pass).
-*   **Domain Isolation:** Core logical engines (pathfinding, decision trees, crowd estimation) are isolated into a pure domain layer (`src/lib/domain`) free of client or framework dependencies.
-
-### 2. Security (Medium Impact)
-*   **Server-Side Lock:** API keys are never exposed to the client. All GenAI calls go through Next.js route handlers.
-*   **Rate Limiting:** Protects `/api/ai/copilot` and `/api/ai/explain-route` with a server-side rate limiter mapping requests by IP.
-*   **Content Security Policy (CSP):** Configures strict headers in `next.config.ts` (e.g., `default-src 'self'`, `frame-ancestors 'none'`, `X-Frame-Options: DENY`) to block XSS and Clickjacking attacks.
-*   **Input Sanitization:** Uses `Zod` schemas on both server routes to validate and parse payloads before processing.
-
-### 3. Efficiency (Medium Impact)
-*   **Algorithmic Performance:** Dijkstra uses an adjacency-list based priority heap for pathfinding, preventing performance lags.
-*   **Production Bundling:** Generates optimized page builds using Turbopack compiler.
-*   **In-Memory Rate Limiter:** Implements a lightweight sliding window memory manager to prevent dependency bloat.
-
-### 4. Testing (Low Impact)
-*   **Vitest Unit Suite:** Covers context states, routing algorithms, and API helper functions.
-*   **86.76% Code Coverage:** Surpasses the 85% requirement limit.
-*   **Playwright E2E Tests:** Configured E2E browser tests in `e2e/basic.spec.ts` that automate smoke testing of user flows.
-
-### 5. Accessibility (Low Impact)
-*   **Zero a11y Violations:** Component-level testing with `vitest-axe` returns `0 violations`.
-*   **Theme Contrast:** Custom Tailwind v4 `@custom-variant dark` maps directly to `data-theme="dark"` attribute, preventing white-on-white text issues in Light Mode.
-*   **Focus Ring Outlines:** Clear, contrast-safe blue rings appear on all keyboard tab focus interactions.
-*   **Keyboard Skip-Link:** Accessible skip-to-content links exist at the top of the root layouts.
-*   **Accessible Data Tables:** Includes alternative tables with full ARIA descriptions.
-
-### 6. Problem Statement Alignment (High Impact)
-*   Integrates all mandated core tracks: dynamic crowd management, smart navigation, real-time decision support, and multi-language volunteer/fan assistance modules.
-
----
 
 ## 💻 CLI Commands & Development
 
